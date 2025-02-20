@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MyApp.Core.Inrerfaces;
-using MyApp.Domain.Inrerfaces;
 using MyApp.Infrastructure.Configuration;
 using MyApp.Infrastructure.Data;
 using MyApp.Infrastructure.Repositories;
@@ -67,7 +66,6 @@ namespace MyApp.Api.Extensions
             });
             // Register services 
             services.AddScoped(typeof(IAsyncBaseRepository<,>), typeof(RepositoryBase<,>));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IProductRepository, ProductRepository>();
 
 

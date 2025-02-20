@@ -22,7 +22,7 @@ public class ProductRepository : RepositoryBase<Product, int>, IProductRepositor
         var query = GetWhereAsync(prd => prd.Name.ToLower().Contains(paginatedSpecsParams.Search.Trim().ToLower()));
         var totalItems = await query.CountAsync();
         var products = await query
-                        .OrderByDescending(x => x.Id)
+                        .OrderByDescending(x => x.CreatedDate)
                         .Skip((paginatedSpecsParams.PageIndex - 1) * paginatedSpecsParams.PageSize)
                         .Take(paginatedSpecsParams.PageSize)
                         .ToListAsync();
